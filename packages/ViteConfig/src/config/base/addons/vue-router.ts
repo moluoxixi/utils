@@ -9,7 +9,7 @@ export default async function (): Promise<UserConfig> {
     plugins: [
       vueRouter({
         extensions: ['.vue', '.md'],
-        dts: 'src/route-map.d.ts',
+        dts: 'src/typings/route-map.d.ts',
       })
     ]
   };

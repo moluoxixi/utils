@@ -10,15 +10,10 @@ export async function createAppConfig(userConfig: UserConfig = {}): Promise<User
 
   const appConfig: UserConfig = {
     build: {
+      // 现代 Vite 默认采用 Rollup 优秀的自动 Code-splitting 策略 (按 Entry 与动态 import 拆分)
+      // 废弃过去强行把 node_modules 统统塞入巨大的 `vendor.js` 的低效缓存反模式
       rollupOptions: {
-        output: {
-          manualChunks(id) {
-            // 最佳实践：默认将所有 node_modules 下的内容拆分为独立的 vendor 包，提供更好的缓存命中率
-            if (id.includes('node_modules')) {
-              return 'vendor';
-            }
-          }
-        }
+        output: {}
       }
     },
     esbuild: {

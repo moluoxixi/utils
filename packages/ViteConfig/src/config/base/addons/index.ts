@@ -14,6 +14,7 @@ const addonMappings: Record<string, string> = {
   'unocss': 'unocss',
   'tailwindcss': 'tailwindcss',
   '@tailwindcss/vite': 'tailwindcss',
+  '@tailwindcss/postcss': 'tailwindcss',
   'unplugin-vue-router': 'vue-router',
   'vite-plugin-vue-layouts': 'vue-layouts',
   'unplugin-auto-import': 'auto-import',
