@@ -1,7 +1,7 @@
 import path from 'node:path';
 import { mergeConfig } from 'vite';
 import type { UserConfig } from 'vite';
-import { detectDependencies } from '../utils/env';
+import { detectDependencies } from '@utils/core';
 import { getBaseConfig } from './base';
 
 /**

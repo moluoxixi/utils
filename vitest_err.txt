@@ -1,0 +1,96 @@
+﻿
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.4 [39m[90mD:/code/utils[39m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mgetBaseConfig successfully resolves dynamic addons based on Env
+[22m[39m[ViteConfig] Applied addon configuration: [36mi18n[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mgetBaseConfig successfully resolves dynamic addons based on Env
+[22m[39m[ViteConfig] Applied addon configuration: [36mtailwindcss[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mgetBaseConfig successfully resolves dynamic addons based on Env
+[22m[39m[ViteConfig] Applied addon configuration: [36mreact[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mgetBaseConfig successfully resolves dynamic addons based on Env
+[22m[39m[ViteConfig] Applied addon configuration: [36mvue[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mgetBaseConfig successfully resolves dynamic addons based on Env
+[22m[39m[ViteConfig] Applied addon configuration: [36munocss[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mgetBaseConfig successfully resolves dynamic addons based on Env
+[22m[39m[ViteConfig] Applied addon configuration: [36mauto-import[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mgetBaseConfig successfully resolves dynamic addons based on Env
+[22m[39m[ViteConfig] Applied addon configuration: [36mcomponents[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mcreateAppConfig overrides specific chunking behaviors natively
+[22m[39m[ViteConfig] Applied addon configuration: [36mi18n[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mcreateAppConfig overrides specific chunking behaviors natively
+[22m[39m[ViteConfig] Applied addon configuration: [36mtailwindcss[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mcreateAppConfig overrides specific chunking behaviors natively
+[22m[39m[ViteConfig] Applied addon configuration: [36mreact[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mcreateAppConfig overrides specific chunking behaviors natively
+[22m[39m[ViteConfig] Applied addon configuration: [36mvue[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mcreateAppConfig overrides specific chunking behaviors natively
+[22m[39m[ViteConfig] Applied addon configuration: [36munocss[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mcreateAppConfig overrides specific chunking behaviors natively
+[22m[39m[ViteConfig] Applied addon configuration: [36mauto-import[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mcreateAppConfig overrides specific chunking behaviors natively
+[22m[39m[ViteConfig] Applied addon configuration: [36mcomponents[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mcreateAppConfig overrides specific chunking behaviors natively
+[22m[39m[ViteConfig] Applied addon configuration: [36mmarkdown[0m
+[ViteConfig] Applied addon configuration: [36mmarkdown[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mcreateAppConfig overrides specific chunking behaviors natively
+[22m[39m[ViteConfig] Applied addon configuration: [36mvue-router[0m
+[ViteConfig] Applied addon configuration: [36mvue-router[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mcreateLibConfig injects accurate external dependencies
+[22m[39m[ViteConfig] Applied addon configuration: [36mi18n[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mcreateLibConfig injects accurate external dependencies
+[22m[39m[ViteConfig] Applied addon configuration: [36mtailwindcss[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mcreateLibConfig injects accurate external dependencies
+[22m[39m[ViteConfig] Applied addon configuration: [36mreact[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mcreateLibConfig injects accurate external dependencies
+[22m[39m[ViteConfig] Applied addon configuration: [36mvue[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mcreateLibConfig injects accurate external dependencies
+[22m[39m[ViteConfig] Applied addon configuration: [36munocss[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mcreateLibConfig injects accurate external dependencies
+[22m[39m[ViteConfig] Applied addon configuration: [36mauto-import[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mcreateLibConfig injects accurate external dependencies
+[22m[39m[ViteConfig] Applied addon configuration: [36mcomponents[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mcreateLibConfig injects accurate external dependencies
+[22m[39m[ViteConfig] Applied addon configuration: [36mmarkdown[0m
+
+[90mstdout[2m | packages/ViteConfig/test/config.test.ts[2m > [22m[2mViteConfig Builders[2m > [22m[2mcreateLibConfig injects accurate external dependencies
+[22m[39m[ViteConfig] Applied addon configuration: [36mvue-router[0m
+
+ [31m❯[39m packages/ViteConfig/test/config.test.ts [2m([22m[2m3 tests[22m[2m | [22m[31m3 failed[39m[2m)[22m[33m 67810[2mms[22m[39m
+[31m     [31m×[31m getBaseConfig successfully resolves dynamic addons based on Env[39m[33m 5032[2mms[22m[39m
+[31m     [31m×[31m createAppConfig overrides specific chunking behaviors natively[39m[33m 43227[2mms[22m[39m
+[31m     [31m×[31m createLibConfig injects accurate external dependencies[39m[33m 19547[2mms[22m[39m
+[90mstdout[2m | getAddonsConfig (D:\code\utils\packages\ViteConfig\src\config\base\addons\index.ts:72:17)
+[22m[39m[ViteConfig] Applied addon configuration: [36mpwa[0m
+[ViteConfig] Applied addon configuration: [36mpwa[0m
+[ViteConfig] Applied addon configuration: [36mpwa[0m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m3 failed[39m[22m[90m (3)[39m
+[2m     Errors [22m [1m[31m3 errors[39m[22m
+[2m   Start at [22m 17:20:19
+[2m   Duration [22m 69.02s[2m (transform 408ms, setup 0ms, import 670ms, tests 67.81s, environment 0ms)[22m
+

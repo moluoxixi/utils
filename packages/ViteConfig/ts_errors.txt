@@ -1,0 +1,11 @@
+﻿src/config/base/addons/auto-import.ts(32,9): error TS2322: Type '(string | Record<string, any>)[]' is not assignable to type 'Arrayable<"vue" | "vue-i18n" | "@vueuse/core" | "vue-router" | ImportsMap | "@vue/composition-api" | "pinia" | "vue-demi" | "vue-router-composables" | "vue/macros" | "vitest" | ... 31 more ... | InlinePreset>'.
+  Type '(string | Record<string, any>)[]' is not assignable to type '("vue" | "vue-i18n" | "@vueuse/core" | "vue-router" | ImportsMap | "@vue/composition-api" | "pinia" | "vue-demi" | "vue-router-composables" | "vue/macros" | "vitest" | ... 31 more ... | InlinePreset)[]'.
+    Type 'string | Record<string, any>' is not assignable to type '"vue" | "vue-i18n" | "@vueuse/core" | "vue-router" | ImportsMap | "@vue/composition-api" | "pinia" | "vue-demi" | "vue-router-composables" | "vue/macros" | "vitest" | ... 31 more ... | InlinePreset'.
+      Type 'string' is not assignable to type '"vue" | "vue-i18n" | "@vueuse/core" | "vue-router" | ImportsMap | "@vue/composition-api" | "pinia" | "vue-demi" | "vue-router-composables" | "vue/macros" | "vitest" | ... 31 more ... | InlinePreset'.
+src/config/base/addons/markdown.ts(9,52): error TS7016: Could not find a declaration file for module 'markdown-it-link-attributes'. 'D:/code/utils/node_modules/.pnpm/markdown-it-link-attributes@4.0.1/node_modules/markdown-it-link-attributes/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/markdown-it-link-attributes` if it exists or add a new declaration (.d.ts) file containing `declare module 'markdown-it-link-attributes';`
+src/config/base/addons/tailwindcss.ts(19,52): error TS2307: Cannot find module 'autoprefixer' or its corresponding type declarations.
+src/index.ts(3,15): error TS2307: Cannot find module './utils/env' or its corresponding type declarations.
+test/index.test.ts(8,3): error TS2724: '"../src/index"' has no exported member named 'createViteConfig'. Did you mean 'createLibConfig'?
+test/index.test.ts(9,3): error TS2305: Module '"../src/index"' has no exported member 'detectProjectFeatures'.
+test/index.test.ts(10,3): error TS2305: Module '"../src/index"' has no exported member 'readProjectManifest'.

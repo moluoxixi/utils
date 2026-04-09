@@ -4,8 +4,6 @@ import type { UserConfig } from 'vite';
  * 文件系统路由（Vue Router）最佳实践
  */
 export default async function (): Promise<UserConfig> {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   const { default: vueRouter } = await import('unplugin-vue-router/vite');
   return {
     plugins: [

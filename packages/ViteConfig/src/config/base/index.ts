@@ -1,7 +1,7 @@
 import path from 'node:path';
 import { mergeConfig } from 'vite';
 import type { UserConfig } from 'vite';
-import { getAddonsConfig } from '../addons';
+import { getAddonsConfig } from './addons';
 
 /**
  * 获取全局通用基础配置

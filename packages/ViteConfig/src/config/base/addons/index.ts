@@ -1,6 +1,6 @@
 import { mergeConfig } from 'vite';
 import type { UserConfig } from 'vite';
-import { detectDependencies } from '../utils/env';
+import { detectDependencies } from '@utils/core';
 
 /**
  * 将 package.json 中的依赖包名称映射到特定的 addon 配置名
@@ -21,6 +21,9 @@ const addonMappings: Record<string, string> = {
   '@intlify/unplugin-vue-i18n': 'i18n',
   'vite-plugin-vue-devtools': 'devtools',
   'vite-plugin-pwa': 'pwa',
+  'unplugin-vue-markdown': 'markdown',
+  'vitest': 'vitest',
+  'vite-ssg': 'vite-ssg',
 };
 
 /**
@@ -38,6 +41,9 @@ const addonImporters: Record<string, () => Promise<{ default: () => Promise<User
   'i18n': () => import('./i18n'),
   'devtools': () => import('./devtools'),
   'pwa': () => import('./pwa'),
+  'markdown': () => import('./markdown'),
+  'vitest': () => import('./vitest'),
+  'vite-ssg': () => import('./vite-ssg'),
 };
 
 /**
