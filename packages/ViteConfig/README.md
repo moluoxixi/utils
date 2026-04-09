@@ -1,0 +1,5 @@
+集成tailwind,unocss,vue,react等前端常用技术做出来的最佳实践vite.config方案，参考Vitesse，
+功能如下：
+根据read-pck自动检测依赖
+根据依赖动态import相关依赖并启用相对应模块
+采用mergeConfig等合并配置
