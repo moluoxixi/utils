@@ -1,7 +1,9 @@
 # # 其他用户配置
-tests
 
-# typings
+# typings & test
+typings
+test
+tests
 
 # rules(可选)
 .cursor

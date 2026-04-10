@@ -11,6 +11,8 @@ export async function createLibConfig(userConfig: UserConfig = {}): Promise<User
   const baseConfig = await getBaseConfig();
   const { deps, peerDependencies } = detectDependencies();
   
+  const root = userConfig.root || process.cwd();
+
   // 最佳实践：库开发过程中必须将业务依赖项 external 剔除出去，否则会打进包内造成膨胀
   const external = [
     ...Object.keys(deps || {}),
@@ -20,7 +22,7 @@ export async function createLibConfig(userConfig: UserConfig = {}): Promise<User
   const libConfig: UserConfig = {
     build: {
       lib: {
-        entry: path.resolve(process.cwd(), 'src/index.ts'),
+        entry: path.resolve(root, 'src/index.ts'),
         formats: ['es', 'cjs'],
         fileName: 'index'
       },

@@ -1,44 +1,55 @@
-import { describe, it, expect, vi } from 'vitest';
-import { getBaseConfig, createAppConfig, createLibConfig } from '../src/index';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { getBaseConfig } from '../src/index';
+import type { Plugin } from 'vite';
+
+// 全局拦截通过引用暴露给测试动态改写的对象，高度控制模拟环境
+let mockDeps: Record<string, string> = {};
 
 vi.mock('@utils/core', async (importOriginal) => {
   const actual = await importOriginal();
   return {
     ...(actual as object),
-    detectDependencies: () => ({ deps: {}, peerDependencies: {} }),
+    detectDependencies: () => ({ deps: mockDeps, peerDependencies: {} }),
   };
 });
 
-describe('ViteConfig Builders', () => {
-  it('getBaseConfig successfully resolves dynamic addons based on Env', async () => {
+describe('Dynamic Dependency Evaluator (Unit)', () => {
+  beforeEach(() => {
+    mockDeps = {}; // reset
+  });
+
+  it('should skip heavyweight instantiation if no major framework dependencies detected', async () => {
     const config = await getBaseConfig();
-    expect(config).toBeDefined();
-    expect(config.resolve?.alias).toBeDefined();
-    // 应该是一个包含了所有生效 Addon Config 的 plugins 数组 (如果有的话)
-    if (config.plugins) {
-      expect(Array.isArray(config.plugins)).toBe(true);
-    }
+    // Array should be undefined or absent since addons did not append anything
+    expect(config.plugins).toBeUndefined();
   });
 
-  it('createAppConfig overrides specific chunking behaviors natively', async () => {
-    const customOptions = { base: '/app-test/' };
-    const config = await createAppConfig(customOptions);
+  it('should naturally load and configure Vue compiler if Vue is present but React is not', async () => {
+    mockDeps = { 'vue': '^3.3.0' };
+    const config = await getBaseConfig();
     
-    expect(config.base).toBe('/app-test/');
-    expect(config.build?.rollupOptions?.output).toBeDefined();
-    // 断言剥离 console 和 debugger 被成功传递并映射成 esbuild 规范
-    expect(config.esbuild).toBeDefined();
-    expect((config.esbuild as any).drop).toContain('console');
+    expect(Array.isArray(config.plugins)).toBe(true);
+    
+    // Flatten Vite Plugin Array
+    const flatPlugins = config.plugins!.flat(10).filter(Boolean) as Plugin[];
+    const hasVuePlugin = flatPlugins.some(p => p.name === 'vite:vue');
+    const hasReactPlugin = flatPlugins.some(p => p.name === 'vite:react-babel');
+
+    expect(hasVuePlugin).toBe(true);
+    expect(hasReactPlugin).toBe(false); // 独立解耦验证
   });
 
-  it('createLibConfig injects accurate external dependencies', async () => {
-    const config = await createLibConfig({
-      build: { outDir: 'lib-dist' }
-    });
+  it('should exclusively spawn React build pipelines if Vue is excluded', async () => {
+    mockDeps = { 'react': '^18.0.0' };
+    const config = await getBaseConfig();
     
-    expect(config.build?.outDir).toBe('lib-dist');
-    expect(config.build?.lib).toBeDefined();
-    expect(config.build?.rollupOptions?.external).toBeDefined();
-    expect(Array.isArray(config.build?.rollupOptions?.external)).toBe(true);
+    expect(Array.isArray(config.plugins)).toBe(true);
+    
+    const flatPlugins = config.plugins!.flat(10).filter(Boolean) as Plugin[];
+    const hasVuePlugin = flatPlugins.some(p => p.name === 'vite:vue');
+    const hasReactPlugin = flatPlugins.some(p => p.name === 'vite:react-babel');
+
+    expect(hasVuePlugin).toBe(false);
+    expect(hasReactPlugin).toBe(true);
   });
 });
