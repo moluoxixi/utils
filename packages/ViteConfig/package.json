@@ -18,11 +18,29 @@
     "@utils/core": "workspace:*"
   },
   "peerDependencies": {
-    "@tailwindcss/vite": "^4.2.2",
-    "@vitejs/plugin-react": "^6.0.1",
-    "@vitejs/plugin-vue": "^6.0.5",
-    "unocss": "^66.6.8",
-    "vite": "^8.0.8"
+    "@tailwindcss/vite": "catalog:build",
+    "@vitejs/plugin-react": "catalog:build",
+    "@vitejs/plugin-vue": "catalog:build",
+    "unocss": "catalog:build",
+    "vite": "catalog:build",
+    "@intlify/unplugin-vue-i18n": "catalog:build",
+    "@shikijs/markdown-it": "catalog:build",
+    "@tailwindcss/postcss": "catalog:build",
+    "@unhead/vue": "catalog:build",
+    "@vueuse/core": "catalog:build",
+    "autoprefixer": "catalog:build",
+    "markdown-it-link-attributes": "catalog:build",
+    "react": "catalog:build",
+    "tailwindcss": "catalog:build",
+    "unplugin-auto-import": "catalog:build",
+    "unplugin-vue-components": "catalog:build",
+    "unplugin-vue-markdown": "catalog:build",
+    "unplugin-vue-router": "catalog:build",
+    "vite-plugin-pwa": "catalog:build",
+    "vite-plugin-vue-devtools": "catalog:build",
+    "vite-plugin-vue-layouts": "catalog:build",
+    "vite-ssg": "catalog:build",
+    "vue": "catalog:build"
   },
   "peerDependenciesMeta": {
     "@tailwindcss/vite": {
@@ -36,11 +54,70 @@
     },
     "unocss": {
       "optional": true
+    },
+    "@intlify/unplugin-vue-i18n": {
+      "optional": true
+    },
+    "@shikijs/markdown-it": {
+      "optional": true
+    },
+    "@tailwindcss/postcss": {
+      "optional": true
+    },
+    "@unhead/vue": {
+      "optional": true
+    },
+    "@vueuse/core": {
+      "optional": true
+    },
+    "autoprefixer": {
+      "optional": true
+    },
+    "markdown-it-link-attributes": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "tailwindcss": {
+      "optional": true
+    },
+    "unplugin-auto-import": {
+      "optional": true
+    },
+    "unplugin-vue-components": {
+      "optional": true
+    },
+    "unplugin-vue-markdown": {
+      "optional": true
+    },
+    "unplugin-vue-router": {
+      "optional": true
+    },
+    "vite-plugin-pwa": {
+      "optional": true
+    },
+    "vite-plugin-vue-devtools": {
+      "optional": true
+    },
+    "vite-plugin-vue-layouts": {
+      "optional": true
+    },
+    "vite-ssg": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
     }
   },
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts --clean",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "tsup": "catalog:dev",
+    "typescript": "catalog:dev",
+    "vitest": "catalog:dev"
   }
 }
