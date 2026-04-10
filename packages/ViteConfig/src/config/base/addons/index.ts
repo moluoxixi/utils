@@ -45,7 +45,7 @@ const addonImporters = {
   'markdown': () => import('./markdown'),
   'vitest': () => import('./vitest'),
   'viteSsg': () => import('./vite-ssg'),
-} satisfies Record<AddonName, () => Promise<object>>;
+} satisfies Record<AddonName, () => Promise<{ default: (options?: any) => Promise<UserConfig> | UserConfig }>>;
 
 /**
  * 获取基于依赖侦测计算后的融合 Config
@@ -53,29 +53,30 @@ const addonImporters = {
 export async function getAddonsConfig(options: ViteConfigOptions = {}): Promise<UserConfig> {
   const { deps } = detectDependencies();
   let combinedConfig: UserConfig = {};
-  const appliedAddons = new Set<AddonName>();
 
-  // 1. 扫描当前 package.json 依赖
+  // 1. 扫描当前 package.json 依赖，记录命中的 addon
+  const detectedAddons = new Set<AddonName>();
   for (const depName of Object.keys(deps)) {
     const addonName = addonMappings[depName];
     if (addonName) {
-      appliedAddons.add(addonName);
+      detectedAddons.add(addonName);
     }
   }
 
-  // 2. 加载每个命中的模块，下发类型安全的 options[addon]（由 AddonName → ViteConfigOptions 保证语义正确性）
-  for (const addon of appliedAddons) {
-    const addonOptions = options[addon];
+  // 2. 遍历所有可用的 Addon，根据配置和依赖情况决定是否启用
+  for (const addon of Object.keys(addonImporters) as AddonName[]) {
+    const addonOption = options[addon];
+    const isObject = typeof addonOption === 'object' && addonOption !== null;
 
-    if (addonOptions === false) {
-      console.log(`[ViteConfig] Addon \x1b[33m${addon}\x1b[0m is disabled via configuration.`);
+    // 判定是否启用：1. 显式对象 2. 显式为 true 3. 未定义但依赖命中
+    if (!isObject && addonOption !== true && !(addonOption === undefined && detectedAddons.has(addon))) {
       continue;
     }
 
     try {
-      type AddonOpts = Exclude<ViteConfigOptions[typeof addon], false>;
-      const mod = await addonImporters[addon]() as { default: (options?: AddonOpts) => Promise<UserConfig> | UserConfig };
-      const configFragment = await mod.default(addonOptions as AddonOpts ?? {});
+      // 加载并应用 Addon 配置
+      const mod = await addonImporters[addon]();
+      const configFragment = await mod.default((isObject ? addonOption : undefined) as any);
       combinedConfig = mergeConfig(combinedConfig, configFragment);
       console.log(`[ViteConfig] Applied addon configuration: \x1b[36m${addon}\x1b[0m`);
     } catch (e) {

@@ -16,12 +16,8 @@ export async function createAppConfig(userConfig: ViteConfigOptions = {}): Promi
       rollupOptions: {
         output: {}
       }
-    },
-    esbuild: {
-      // 最佳实践：Vite 默认采用 esbuild，使用 esbuild 剔除 console 会比 terser 快很多倍
-      drop: ['console', 'debugger'],
     }
   };
-  
+
   return mergeConfig(mergeConfig(baseConfig, appConfig), userConfig);
 }

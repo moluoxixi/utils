@@ -39,19 +39,19 @@ export type AddonName =
  * Passing `false` disables that addon entirely.
  */
 export interface ViteConfigOptions extends UserConfig {
-  vue?: PluginOptions<typeof VuePlugin> | false;
-  react?: PluginOptions<typeof ReactPlugin> | false;
-  unocss?: PluginOptions<typeof UnocssPlugin> | false;
+  vue?: PluginOptions<typeof VuePlugin> | boolean;
+  react?: PluginOptions<typeof ReactPlugin> | boolean;
+  unocss?: PluginOptions<typeof UnocssPlugin> | boolean;
   /** Tailwindcss v4 Vite plugin takes no options; this passes through to the v4 PostCSS plugin or v3 Config object */
-  tailwindcss?: Record<string, unknown> | false;
-  vueRouter?: PluginOptions<typeof VueRouterPlugin> | false;
-  vueLayouts?: PluginOptions<typeof VueLayoutsPlugin> | false;
-  autoImport?: PluginOptions<typeof AutoImportPlugin> | false;
-  components?: PluginOptions<typeof ComponentsPlugin> | false;
-  i18n?: PluginOptions<typeof VueI18nPlugin> | false;
-  devtools?: PluginOptions<typeof VueDevToolsPlugin> | false;
-  pwa?: PluginOptions<typeof VitePWA> | false;
-  markdown?: PluginOptions<typeof MarkdownPlugin> | false;
-  vitest?: VitestConfig | false;
-  viteSsg?: ViteSSGOptions | false;
+  tailwindcss?: Record<string, unknown> | boolean;
+  vueRouter?: PluginOptions<typeof VueRouterPlugin> | boolean;
+  vueLayouts?: PluginOptions<typeof VueLayoutsPlugin> | boolean;
+  autoImport?: PluginOptions<typeof AutoImportPlugin> | boolean;
+  components?: PluginOptions<typeof ComponentsPlugin> | boolean;
+  i18n?: PluginOptions<typeof VueI18nPlugin> | boolean;
+  devtools?: PluginOptions<typeof VueDevToolsPlugin> | boolean;
+  pwa?: PluginOptions<typeof VitePWA> | boolean;
+  markdown?: PluginOptions<typeof MarkdownPlugin> | boolean;
+  vitest?: VitestConfig | boolean;
+  viteSsg?: ViteSSGOptions | boolean;
 }

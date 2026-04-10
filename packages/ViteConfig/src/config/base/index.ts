@@ -16,9 +16,12 @@ export async function getBaseConfig(options: ViteConfigOptions = {}): Promise<Us
     resolve: {
       alias: {
         '@': path.resolve(process.cwd(), 'src'),
-        '~/': `${path.resolve(process.cwd(), 'src')}/`,
       },
     },
+    esbuild: {
+      // 最佳实践：Vite 默认采用 esbuild，使用 esbuild 剔除 console 会比 terser 快很多倍
+      drop: ['console', 'debugger'],
+    }
   };
 
   // 通过 mergeConfig 完美融合 Addons 中的诸如 PostCSS、Plugins、Server 等复杂字段
