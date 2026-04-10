@@ -1,9 +1,10 @@
 import type { UserConfig } from 'vite';
+import type { ViteConfigOptions } from '../../../types';
 
 /**
  * 完整对齐 Vitesse 的 Markdown 解析系统设定 (Shiki + LinkAttributes)
  */
-export default async function (): Promise<UserConfig> {
+export default async function (options: Exclude<ViteConfigOptions['markdown'], boolean> = {}): Promise<UserConfig> {
   const { default: Markdown } = await import('unplugin-vue-markdown/vite');
   const { default: Shiki } = await import('@shikijs/markdown-it');
   const { default: LinkAttributes } = await import('markdown-it-link-attributes');

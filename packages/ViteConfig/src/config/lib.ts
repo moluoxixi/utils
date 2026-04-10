@@ -3,12 +3,13 @@ import { mergeConfig } from 'vite';
 import type { UserConfig } from 'vite';
 import { detectDependencies } from '@utils/core';
 import { getBaseConfig } from './base';
+import type { ViteConfigOptions } from '../types';
 
 /**
  * 构建 Library（库项目）专用的 Vite 配置文件
  */
-export async function createLibConfig(userConfig: UserConfig = {}): Promise<UserConfig> {
-  const baseConfig = await getBaseConfig();
+export async function createLibConfig(userConfig: ViteConfigOptions = {}): Promise<UserConfig> {
+  const baseConfig = await getBaseConfig(userConfig);
   const { deps, peerDependencies } = detectDependencies();
   
   const root = userConfig.root || process.cwd();

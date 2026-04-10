@@ -1,12 +1,13 @@
 import { mergeConfig } from 'vite';
 import type { UserConfig } from 'vite';
 import { getBaseConfig } from './base';
+import type { ViteConfigOptions } from '../types';
 
 /**
  * 构建 Web App 应用专用的 Vite 配置文件
  */
-export async function createAppConfig(userConfig: UserConfig = {}): Promise<UserConfig> {
-  const baseConfig = await getBaseConfig();
+export async function createAppConfig(userConfig: ViteConfigOptions = {}): Promise<UserConfig> {
+  const baseConfig = await getBaseConfig(userConfig);
 
   const appConfig: UserConfig = {
     build: {

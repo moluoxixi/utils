@@ -1,14 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "ignoreDeprecations": "6.0",
-    "outDir": "./dist",
-    "rootDir": "..",
-    "paths": {
-      "@utils/core": ["../core/src/index.ts"]
-    },
-    "types": ["node", "vitest/globals"]
+    "outDir": "dist",
+    "declaration": true,
+    "types": ["node"]
   },
-  "include": ["src/**/*.ts", "test/**/*.ts"]
+  "include": ["src/**/*", "test/**/*"],
+  "exclude": ["node_modules", "dist", "test/fixtures/**/*"]
 }

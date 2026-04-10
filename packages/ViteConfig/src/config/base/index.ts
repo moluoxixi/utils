@@ -2,13 +2,14 @@ import path from 'node:path';
 import { mergeConfig } from 'vite';
 import type { UserConfig } from 'vite';
 import { getAddonsConfig } from './addons';
+import type { ViteConfigOptions } from '../../types';
 
 /**
  * 获取全局通用基础配置
  */
-export async function getBaseConfig(): Promise<UserConfig> {
-  // 基于插件目录(Addons)动态合并后的配置
-  const addonsConfig = await getAddonsConfig();
+export async function getBaseConfig(options: ViteConfigOptions = {}): Promise<UserConfig> {
+  // 基于插件目录(Addons)动态合并后的配置，将 options 字典透明下移
+  const addonsConfig = await getAddonsConfig(options);
 
   // 兜底及固定写法的配置
   const rootConfig: UserConfig = {

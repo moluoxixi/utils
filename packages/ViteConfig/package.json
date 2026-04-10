@@ -14,32 +14,71 @@
       "import": "./dist/index.js"
     }
   },
-  "dependencies": {
-    "@utils/core": "workspace:*"
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --clean",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
-  "peerDependencies": {
-    "@tailwindcss/vite": "catalog:build",
-    "@vitejs/plugin-react": "catalog:build",
-    "@vitejs/plugin-vue": "catalog:build",
-    "unocss": "catalog:build",
-    "vite": "catalog:build",
+  "dependencies": {
+    "@utils/core": "workspace:*",
+    "defu": "catalog:build"
+  },
+  "devDependencies": {
     "@intlify/unplugin-vue-i18n": "catalog:build",
     "@shikijs/markdown-it": "catalog:build",
     "@tailwindcss/postcss": "catalog:build",
+    "@tailwindcss/vite": "catalog:build",
+    "@types/markdown-it-link-attributes": "catalog:types",
     "@unhead/vue": "catalog:build",
+    "@vitejs/plugin-react": "catalog:build",
+    "@vitejs/plugin-vue": "catalog:build",
+    "@vueuse/core": "catalog:build",
+    "autoprefixer": "catalog:build",
+    "markdown-it-link-attributes": "catalog:build",
+    "postcss": "catalog:build",
+    "react": "catalog:build",
+    "tailwindcss": "catalog:build",
+    "tsup": "catalog:dev",
+    "typescript": "catalog:dev",
+    "unocss": "catalog:build",
+    "unplugin-auto-import": "catalog:build",
+    "unplugin-vue-components": "catalog:build",
+    "unplugin-vue-macros": "catalog:build",
+    "unplugin-vue-markdown": "catalog:build",
+    "unplugin-vue-router": "catalog:build",
+    "vite": "catalog:build",
+    "vite-plugin-pwa": "catalog:build",
+    "vite-plugin-vue-devtools": "catalog:build",
+    "vite-plugin-vue-layouts": "catalog:build",
+    "vite-ssg": "catalog:build",
+    "vitest": "catalog:dev",
+    "vue": "catalog:build"
+  },
+  "peerDependencies": {
+    "@intlify/unplugin-vue-i18n": "catalog:build",
+    "@shikijs/markdown-it": "catalog:build",
+    "@tailwindcss/postcss": "catalog:build",
+    "@tailwindcss/vite": "catalog:build",
+    "@unhead/vue": "catalog:build",
+    "@vitejs/plugin-react": "catalog:build",
+    "@vitejs/plugin-vue": "catalog:build",
     "@vueuse/core": "catalog:build",
     "autoprefixer": "catalog:build",
     "markdown-it-link-attributes": "catalog:build",
     "react": "catalog:build",
     "tailwindcss": "catalog:build",
+    "unocss": "catalog:build",
     "unplugin-auto-import": "catalog:build",
     "unplugin-vue-components": "catalog:build",
+    "unplugin-vue-macros": "catalog:build",
     "unplugin-vue-markdown": "catalog:build",
     "unplugin-vue-router": "catalog:build",
+    "vite": "catalog:build",
     "vite-plugin-pwa": "catalog:build",
     "vite-plugin-vue-devtools": "catalog:build",
     "vite-plugin-vue-layouts": "catalog:build",
     "vite-ssg": "catalog:build",
+    "vite-ssg-sitemap": "catalog:build",
     "vue": "catalog:build"
   },
   "peerDependenciesMeta": {
@@ -50,6 +89,9 @@
       "optional": true
     },
     "@vitejs/plugin-vue": {
+      "optional": true
+    },
+    "vite-ssg-sitemap": {
       "optional": true
     },
     "unocss": {
@@ -108,16 +150,9 @@
     },
     "vue": {
       "optional": true
+    },
+    "unplugin-vue-macros": {
+      "optional": true
     }
-  },
-  "scripts": {
-    "build": "tsup src/index.ts --format esm --dts --clean",
-    "test": "vitest run",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
-  },
-  "devDependencies": {
-    "tsup": "catalog:dev",
-    "typescript": "catalog:dev",
-    "vitest": "catalog:dev"
   }
 }

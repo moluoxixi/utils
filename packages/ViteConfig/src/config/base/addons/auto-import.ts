@@ -1,15 +1,20 @@
 import type { UserConfig } from 'vite';
+import type AutoImportPlugin from 'unplugin-auto-import/vite';
 import { detectDependencies } from '@utils/core';
+import type { PluginOptions } from '@utils/core';
+import { defu } from 'defu';
+
+type AutoImportOptions = PluginOptions<typeof AutoImportPlugin>;
 
 /**
  * API 自动按需引入最佳实践 (严格类型安全、零 any)
  */
-export default async function (): Promise<UserConfig> {
+export default async function (options: AutoImportOptions = {}): Promise<UserConfig> {
   const { deps } = detectDependencies();
   const { default: AutoImport } = await import('unplugin-auto-import/vite');
 
   // 构建核心配置数组
-  const imports: Array<string | Record<string, unknown>> = [];
+  const imports: Exclude<AutoImportOptions['imports'], undefined> = [];
 
   // 按路径动态 Push 核心框架与热门宏
   if (deps['vue']) imports.push('vue');
@@ -18,35 +23,37 @@ export default async function (): Promise<UserConfig> {
   if (deps['@vueuse/core']) imports.push('@vueuse/core');
   if (deps['vitest']) imports.push('vitest');
 
-  const resolvers: Array<unknown> = [];
-
   // 按路径动态 Push 插件宏
   if (deps['unplugin-vue-router'] || deps['vue-router']) {
     const { VueRouterAutoImports } = await import('unplugin-vue-router');
-    imports.push(VueRouterAutoImports as Record<string, unknown>);
+    imports.push(VueRouterAutoImports);
     imports.push({ 'vue-router/auto': ['useLink'] });
   }
 
   if (deps['@unhead/vue']) {
     const { unheadVueComposablesImports } = await import('@unhead/vue');
-    imports.push(unheadVueComposablesImports as Record<string, unknown>);
+    imports.push(unheadVueComposablesImports);
   }
 
-  if (deps['element-plus'] && deps['unplugin-vue-components']) {
+  const resolvers: AutoImportOptions['resolvers'] = [];
+
+  if (deps['element-plus']) {
     const { ElementPlusResolver } = await import('unplugin-vue-components/resolvers');
-    resolvers.push(ElementPlusResolver());
+    resolvers.push(ElementPlusResolver() as any);
   }
+
+  const defaultPluginOptions: AutoImportOptions = {
+    include: [/\.[jt]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
+    imports,
+    ...(resolvers!.length > 0 ? { resolvers } : {}),
+    dts: 'src/typings/auto-imports.d.ts',
+    dirs: ['src/composables', 'src/stores'],
+    vueTemplate: true,
+  };
 
   return {
     plugins: [
-      AutoImport({
-        include: [/\.[jt]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
-        imports: imports as Exclude<NonNullable<Parameters<typeof AutoImport>[0]>['imports'], undefined>,
-        ...(resolvers.length > 0 ? { resolvers: resolvers as Exclude<NonNullable<Parameters<typeof AutoImport>[0]>['resolvers'], undefined> } : {}),
-        dts: 'src/typings/auto-imports.d.ts',
-        dirs: ['src/composables', 'src/stores'],
-        vueTemplate: true,
-      })
+      AutoImport(defu(options, defaultPluginOptions) as AutoImportOptions)
     ]
   };
 }
