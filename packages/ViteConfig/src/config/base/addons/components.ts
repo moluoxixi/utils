@@ -19,9 +19,27 @@ export default async function (options: ComponentsOptions = {}): Promise<UserCon
     resolvers.push(ElementPlusResolver());
   }
 
+  const extensions: string[] = [];
+  const includePatterns: RegExp[] = [];
+
+  if (deps['vue']) {
+    extensions.push('vue');
+    includePatterns.push(/\.vue$/, /\.vue\?vue/);
+  }
+
+  if (deps['svelte']) {
+    extensions.push('svelte');
+    includePatterns.push(/\.svelte$/);
+  }
+
+  if (deps['unplugin-vue-markdown'] || deps['vite-plugin-md'] || deps['vite-plugin-vue-markdown']) {
+    extensions.push('md');
+    includePatterns.push(/\.md$/);
+  }
+
   const defaultPluginOptions = {
-    extensions: ['vue', 'md'],
-    include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+    extensions,
+    include: includePatterns,
     ...(resolvers.length > 0 ? { resolvers: resolvers as Exclude<NonNullable<Parameters<typeof Components>[0]>['resolvers'], undefined> } : {}),
     dts: 'src/typings/components.d.ts',
   };

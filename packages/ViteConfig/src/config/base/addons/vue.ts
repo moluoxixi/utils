@@ -8,8 +8,16 @@ export default async function (options: Exclude<ViteConfigOptions['vue'], boolea
   const { deps } = detectDependencies();
   const { default: vue } = await import('@vitejs/plugin-vue');
 
+  const includePatterns: RegExp[] = [];
+  if (deps['vue']) {
+    includePatterns.push(/\.vue$/);
+  }
+  if (deps['unplugin-vue-markdown'] || deps['vite-plugin-md'] || deps['vite-plugin-vue-markdown']) {
+    includePatterns.push(/\.md$/);
+  }
+
   const defaultPluginOptions = {
-    include: [/\.vue$/, /\.md$/],
+    include: includePatterns,
   };
 
   const vuePlugin = vue(defu(options, defaultPluginOptions));
