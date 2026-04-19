@@ -1,6 +1,6 @@
 import type { UserConfig } from 'vite';
 import type { ViteConfigOptions } from '../../../types';
-import { detectDependencies } from '@utils/core';
+import { detectDependencies } from '@moluoxixi/core';
 import { defu } from 'defu';
 
 /**

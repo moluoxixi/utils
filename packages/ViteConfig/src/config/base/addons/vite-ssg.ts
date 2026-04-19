@@ -1,6 +1,6 @@
 import type { UserConfig } from 'vite';
 import type { ViteConfigOptions } from '../../../types';
-import { detectDependencies } from '@utils/core';
+import { detectDependencies } from '@moluoxixi/core';
 
 /**
  * Vite SSG 及 SSR 相关 Vitesse 特殊解耦配置

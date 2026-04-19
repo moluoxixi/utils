@@ -5,7 +5,7 @@ import type { Plugin } from 'vite';
 // 全局拦截通过引用暴露给测试动态改写的对象，高度控制模拟环境
 let mockDeps: Record<string, string> = {};
 
-vi.mock('@utils/core', async (importOriginal) => {
+vi.mock('@moluoxixi/core', async (importOriginal) => {
   const actual = await importOriginal();
   return {
     ...(actual as object),

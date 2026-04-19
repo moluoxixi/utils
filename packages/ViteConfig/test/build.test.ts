@@ -4,7 +4,7 @@ import { createAppConfig, createLibConfig } from '../src/index';
 import path from 'node:path';
 import fs from 'node:fs';
 
-vi.mock('@utils/core', async (importOriginal) => {
+vi.mock('@moluoxixi/core', async (importOriginal) => {
   const actual = await importOriginal();
   return {
     ...(actual as object),

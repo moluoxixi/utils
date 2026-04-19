@@ -12,7 +12,7 @@ import type UnocssPlugin from 'unocss/vite';
 import type VueLayoutsPlugin from 'vite-plugin-vue-layouts';
 import type { ViteSSGOptions } from 'vite-ssg';
 import type { InlineConfig as VitestConfig } from 'vitest/node';
-import type { PluginOptions } from '@utils/core';
+import type { PluginOptions } from '@moluoxixi/core';
 
 /**
  * All supported addon identifiers (camelCase, matches ViteConfigOptions keys)

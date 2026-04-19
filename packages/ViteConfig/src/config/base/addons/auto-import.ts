@@ -1,7 +1,7 @@
 import type { UserConfig } from 'vite';
 import type AutoImportPlugin from 'unplugin-auto-import/vite';
-import { detectDependencies } from '@utils/core';
-import type { PluginOptions } from '@utils/core';
+import { detectDependencies } from '@moluoxixi/core';
+import type { PluginOptions } from '@moluoxixi/core';
 import { defu } from 'defu';
 
 type AutoImportOptions = PluginOptions<typeof AutoImportPlugin>;

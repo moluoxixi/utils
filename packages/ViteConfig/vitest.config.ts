@@ -5,7 +5,7 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   resolve: {
     alias: {
-      "@utils/core": fileURLToPath(new URL("../core/src/index.ts", import.meta.url)),
+      "@moluoxixi/core": fileURLToPath(new URL("../core/src/index.ts", import.meta.url)),
     },
   },
 });

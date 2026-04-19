@@ -1,5 +1,5 @@
 {
-  "name": "@utils/vite-config",
+  "name": "@moluoxixi/vite-config",
   "version": "0.0.0",
   "type": "module",
   "files": [
@@ -20,7 +20,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@utils/core": "workspace:*",
+    "@moluoxixi/core": "workspace:*",
     "defu": "catalog:build"
   },
   "devDependencies": {

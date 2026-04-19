@@ -12,7 +12,7 @@
     "exactOptionalPropertyTypes": true,
     "baseUrl": ".",
     "paths": {
-      "@utils/*": ["packages/*/src/index.ts"]
+      "@moluoxixi/*": ["packages/*/src/index.ts"]
     }
   }
 }

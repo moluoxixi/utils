@@ -1,6 +1,6 @@
 import { mergeConfig } from 'vite';
 import type { UserConfig } from 'vite';
-import { detectDependencies } from '@utils/core';
+import { detectDependencies } from '@moluoxixi/core';
 import type { AddonName, ViteConfigOptions } from '../../../types';
 
 /**
