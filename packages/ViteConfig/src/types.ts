@@ -1,4 +1,4 @@
-import type { UserConfig } from 'vite';
+import type { ConfigEnv, UserConfig } from 'vite';
 import type VuePlugin from '@vitejs/plugin-vue';
 import type ReactPlugin from '@vitejs/plugin-react';
 import type { VitePWA } from 'vite-plugin-pwa';
@@ -55,3 +55,12 @@ export interface ViteConfigOptions extends UserConfig {
   vitest?: VitestConfig | boolean;
   viteSsg?: ViteSSGOptions | boolean;
 }
+
+/**
+ * 与 defineConfig 对齐的配置导出类型
+ * - 对象形式：直接传入 ViteConfigOptions
+ * - 函数形式：接收 Vite 的 ConfigEnv，返回 ViteConfigOptions
+ */
+export type ViteConfigExport =
+  | ViteConfigOptions
+  | ((env: ConfigEnv) => ViteConfigOptions | Promise<ViteConfigOptions>);

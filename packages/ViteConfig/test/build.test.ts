@@ -1,8 +1,15 @@
 import { describe, it, expect, vi } from 'vitest';
 import { build } from 'vite';
+import type { ConfigEnv, UserConfig, UserConfigExport } from 'vite';
 import { createAppConfig, createLibConfig } from '../src/index';
 import path from 'node:path';
 import fs from 'node:fs';
+
+const mockEnv: ConfigEnv = { command: 'build', mode: 'production' };
+
+async function resolveConfig(config: UserConfigExport): Promise<UserConfig> {
+  return typeof config === 'function' ? config(mockEnv) : config;
+}
 
 vi.mock('@moluoxixi/core', async (importOriginal) => {
   const actual = await importOriginal();
@@ -22,7 +29,7 @@ describe('Vite Pipeline Integration Build', () => {
       fs.rmSync(outDir, { recursive: true, force: true });
     }
 
-    const config = await createAppConfig();
+    const config = await resolveConfig(createAppConfig());
     
     // 执行真实的 Vite 打包 (基于配置)
     await build({
@@ -44,7 +51,7 @@ describe('Vite Pipeline Integration Build', () => {
     const fixturePath = path.resolve(__dirname, 'fixtures/lib');
     const outDir = path.resolve(fixturePath, 'dist');
     
-    const config = await createLibConfig({ root: fixturePath });
+    const config = await resolveConfig(createLibConfig({ root: fixturePath }));
     
     try {
       await build({
