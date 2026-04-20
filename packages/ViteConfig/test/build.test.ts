@@ -51,7 +51,7 @@ describe('Vite Pipeline Integration Build', () => {
     const fixturePath = path.resolve(__dirname, 'fixtures/lib');
     const outDir = path.resolve(fixturePath, 'dist');
     
-    const config = await resolveConfig(createLibConfig({ root: fixturePath }));
+    const config = await resolveConfig(createLibConfig({ viteConfig: { root: fixturePath } }));
     
     try {
       await build({

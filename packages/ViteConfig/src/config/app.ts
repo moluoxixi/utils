@@ -10,16 +10,18 @@ import type { ViteConfigExport } from '../types';
  * // 对象形式
  * export default createAppConfig({ vue: true })
  *
- * // 函数形式
  * export default createAppConfig(({ mode }) => ({
  *   vue: true,
- *   base: mode === 'development' ? '/' : '/app/',
+ *   viteConfig: {
+ *     base: mode === 'development' ? '/' : '/app/',
+ *   }
  * }))
  */
 export function createAppConfig(config: ViteConfigExport = {}): UserConfigExport {
   return defineConfig(async (env) => {
-    const userConfig = typeof config === 'function' ? await config(env) : config;
-    const baseConfig = await getBaseConfig(userConfig);
+    const userOptions = typeof config === 'function' ? await config(env) : config;
+    const baseConfig = await getBaseConfig(userOptions);
+    const viteConfigExt = userOptions.viteConfig || {};
 
     const appConfig: UserConfig = {
       build: {
@@ -31,6 +33,6 @@ export function createAppConfig(config: ViteConfigExport = {}): UserConfigExport
       }
     };
 
-    return mergeConfig(mergeConfig(baseConfig, appConfig), userConfig);
+    return mergeConfig(mergeConfig(baseConfig, appConfig), viteConfigExt);
   });
 }

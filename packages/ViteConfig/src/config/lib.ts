@@ -12,18 +12,20 @@ import type { ViteConfigExport } from '../types';
  * // 对象形式
  * export default createLibConfig()
  *
- * // 函数形式
  * export default createLibConfig(({ mode }) => ({
- *   build: { sourcemap: mode !== 'production' },
+ *   viteConfig: {
+ *     build: { sourcemap: mode !== 'production' },
+ *   }
  * }))
  */
 export function createLibConfig(config: ViteConfigExport = {}): UserConfigExport {
   return defineConfig(async (env) => {
-    const userConfig = typeof config === 'function' ? await config(env) : config;
-    const baseConfig = await getBaseConfig(userConfig);
+    const userOptions = typeof config === 'function' ? await config(env) : config;
+    const baseConfig = await getBaseConfig(userOptions);
+    const viteConfigExt = userOptions.viteConfig || {};
     const { deps, peerDependencies } = detectDependencies();
     
-    const root = userConfig.root || process.cwd();
+    const root = viteConfigExt.root || process.cwd();
 
     // 最佳实践：库开发过程中必须将业务依赖项 external 剔除出去，否则会打进包内造成膨胀
     const external = [
@@ -44,6 +46,6 @@ export function createLibConfig(config: ViteConfigExport = {}): UserConfigExport
       }
     };
     
-    return mergeConfig(mergeConfig(baseConfig, libConfig), userConfig);
+    return mergeConfig(mergeConfig(baseConfig, libConfig), viteConfigExt);
   });
 }

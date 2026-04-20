@@ -38,7 +38,8 @@ export type AddonName =
  * native options type, extracted via PluginOptions<typeof Plugin>.
  * Passing `false` disables that addon entirely.
  */
-export interface ViteConfigOptions extends UserConfig {
+export interface ViteConfigOptions {
+  viteConfig?: UserConfig;
   vue?: PluginOptions<typeof VuePlugin> | boolean;
   react?: PluginOptions<typeof ReactPlugin> | boolean;
   unocss?: PluginOptions<typeof UnocssPlugin> | boolean;
